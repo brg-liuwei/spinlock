@@ -31,12 +31,12 @@ func main() {
 
 func testSpinLock(loop int) {
 	var data int
-	var spin spinlock.SpinLock
+	var spin SpinLock
 	var wg sync.WaitGroup
 
 	for i := 0; i < loop; i++ {
 		wg.Add(1)
-		go func(val *int, lock *spinlock.SpinLock) {
+		go func(val *int, lock *SpinLock) {
 			{
 				lock.Lock()
 				defer lock.UnLock()
